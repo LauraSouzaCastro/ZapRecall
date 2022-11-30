@@ -1,16 +1,18 @@
 import styled from "styled-components"
 import setaPlay from "../assets/seta_play.png"
 
-
-
-export default function Pergunta({cards, setCardsFeitos}) {
+export default function Pergunta({cards, setCardsFeitos, cardsFeitos}) {
+    function viraCard(card){
+        setCardsFeitos([...cardsFeitos, card.id])
+        console.log(cardsFeitos.includes(card.id))
+    }
     return (
             <>
                 {cards.map( (c) => {
                     return(
-                        <PerguntaFechada key={c.id}>
+                        <PerguntaFechada key={c.id} cardsFeitos={cardsFeitos} card={c}>
                             <PerguntaFechadaP>Pergunta {c.id}</PerguntaFechadaP>
-                            <img src={setaPlay} alt=""/>
+                            <Botao disabled={cardsFeitos.includes(c.id)} onClick={() => viraCard(c)}><img src={setaPlay} alt=""/></Botao>
                         </PerguntaFechada>
                     )
                 })}           
@@ -30,7 +32,10 @@ const PerguntaFechada = styled.div`
     align-items: center;
     justify-content: space-between;
 `;
-
+const Botao =styled.button`
+    border:none;
+    background: none;
+`;
 const PerguntaFechadaP = styled.p`
   font-family: 'Recursive';
   font-style: normal;
@@ -39,4 +44,4 @@ const PerguntaFechadaP = styled.p`
   line-height: 19px;
   color: #333333;
 
-`
+`;

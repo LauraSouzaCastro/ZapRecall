@@ -22,9 +22,9 @@ export default function App() {
     <>
       <GlobalStyle />
       <ScreenContainer>
-        <Logo></Logo>
-        <Pergunta cards={cards} setCardsFeitos={setCardsFeitos}></Pergunta>
-        <Rodape cards={cards} cardsFeitos={cardsFeitos}></Rodape>
+        <Logo />
+        <Pergunta cards={cards} setCardsFeitos={setCardsFeitos} cardsFeitos={cardsFeitos} />
+        <Rodape cards={cards} cardsFeitos={cardsFeitos} />
       </ScreenContainer>
     </>
   );
