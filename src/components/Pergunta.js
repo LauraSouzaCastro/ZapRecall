@@ -1,24 +1,24 @@
 import { useState } from "react";
-import styled from "styled-components"
-import setaPlay from "../assets/seta_play.png"
-import setaVirar from "../assets/seta_virar.png"
-import certoIcone from "../assets/icone_certo.png"
-import quaseIcone from "../assets/icone_quase.png"
-import erroIcone from "../assets/icone_erro.png"
+import styled from "styled-components";
+import setaPlay from "../assets/seta_play.png";
+import setaVirar from "../assets/seta_virar.png";
+import certoIcone from "../assets/icone_certo.png";
+import quaseIcone from "../assets/icone_quase.png";
+import erroIcone from "../assets/icone_erro.png";
 
 export default function Pergunta({cards, setCardsFeitos, cardsFeitos, respostas, setRespostas}) {
-    const [cardsVirados, setCardsVirados] = useState([])
-    const [cardsRespostas, setCardsRespostas] = useState([])
+    const [cardsVirados, setCardsVirados] = useState([]);
+    const [cardsRespostas, setCardsRespostas] = useState([]);
     function respondeu(c, str){
-        setCardsFeitos([...cardsFeitos, c.id])
+        setCardsFeitos([...cardsFeitos, c.id]);
         if(str === "erro"){
-            setRespostas([...respostas, {id: c.id, icone: erroIcone, cor: "#FF3030"}])
+            setRespostas([...respostas, {id: c.id, icone: erroIcone, cor: "#FF3030"}]);
         }
         if(str === "quase"){
-            setRespostas([...respostas, {id: c.id, icone: quaseIcone,  cor: "#FF922E"}])
+            setRespostas([...respostas, {id: c.id, icone: quaseIcone,  cor: "#FF922E"}]);
         }
         if(str === "certo"){
-            setRespostas([...respostas, {id: c.id, icone: certoIcone, cor: "#2FBE34"}])
+            setRespostas([...respostas, {id: c.id, icone: certoIcone, cor: "#2FBE34"}]);
         }
     }
     function renderiza(c){
@@ -32,7 +32,7 @@ export default function Pergunta({cards, setCardsFeitos, cardsFeitos, respostas,
                                     <p>Pergunta {respostas[i].id}</p>
                                     <img src={respostas[i].icone} alt=""/>
                                 </PerguntaFechada>
-                            )
+                            );
                         }
                     }
                 }else{
@@ -45,7 +45,7 @@ export default function Pergunta({cards, setCardsFeitos, cardsFeitos, respostas,
                                 <BotaoOpcao onClick={() => respondeu(c, "certo")} cor={"#2FBE34"}>Zap!</BotaoOpcao>
                             </ContainerBotoes>
                         </PerguntaAberta>
-                    )
+                    );
                 }
             }else{
                 return (
@@ -53,7 +53,7 @@ export default function Pergunta({cards, setCardsFeitos, cardsFeitos, respostas,
                         <p>{c.question}</p>
                         <img src={setaVirar} alt="" onClick={() => setCardsRespostas([...cardsRespostas, c.id])}/>
                     </PerguntaAberta>
-                )
+                );
             }
         }else{
             return(
@@ -61,16 +61,18 @@ export default function Pergunta({cards, setCardsFeitos, cardsFeitos, respostas,
                     <p>Pergunta {c.id}</p>
                     <img src={setaPlay} alt="" onClick={() => setCardsVirados([...cardsVirados, c.id])}/>
                 </PerguntaFechada>
-            )
+            );
         }
     } 
     return (
-            <>
+            <Container>
                 {cards.map( (c) => renderiza(c))}           
-            </>
-    )
+            </Container>
+    );
 }
-
+const Container = styled.div`
+    margin-bottom: 160px;
+`;
 const PerguntaFechada = styled.div`
     width: 300px;
     height: 65px;

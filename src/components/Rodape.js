@@ -1,9 +1,7 @@
-import styled from "styled-components"
-import certoIcone from "../assets/icone_certo.png"
-import quaseIcone from "../assets/icone_quase.png"
-import erroIcone from "../assets/icone_erro.png"
-import party from "../assets/party.png"
-import sad from "../assets/sad.png"
+import styled from "styled-components";
+import erroIcone from "../assets/icone_erro.png";
+import party from "../assets/party.png";
+import sad from "../assets/sad.png";
 export default function Rodape({cards, cardsFeitos, respostas}){
     return(
         <FooterConcluidos>
@@ -13,7 +11,7 @@ export default function Rodape({cards, cardsFeitos, respostas}){
                 {respostas.map((r) => <img key={r.id} src={r.icone} alt="" />)}
             </ContainerBotoes>
         </FooterConcluidos>
-    )
+    );
 }
 
 const FooterConcluidos = styled.div`
@@ -57,4 +55,4 @@ const Mensagem = styled.div`
             margin-right: 5px;
         }
     }
-`
+`;

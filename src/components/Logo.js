@@ -1,12 +1,12 @@
-import styled from "styled-components"
-import logo from "../assets/logo.png"
+import styled from "styled-components";
+import logo from "../assets/logo.png";
 export default function Logo(){
     return(
         <LogoContainer>
             <img src={logo} alt=""/>
             <h1>ZapRecall</h1>
         </LogoContainer>
-    )
+    );
 }
 
 const LogoContainer = styled.div`
@@ -25,4 +25,4 @@ const LogoContainer = styled.div`
         color: #FFFFFF;
         margin-left: 20px;
     }
-`
+`;
