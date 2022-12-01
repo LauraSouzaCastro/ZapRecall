@@ -37,5 +37,5 @@ const ScreenContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 100px;
+    padding-bottom: 160px;
 `;
