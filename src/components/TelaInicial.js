@@ -5,7 +5,7 @@ export default function TelaInicial({setIniciou}){
         <Container>
             <img src={logo} alt="" />
             <h1>ZapRecall</h1>
-            <Botao onClick={() => setIniciou(true)}>Iniciar Recall!</Botao>
+            <Botao onClick={() => setIniciou(true)} data-test="start-btn">Iniciar Recall!</Botao>
         </Container>
     );
 }

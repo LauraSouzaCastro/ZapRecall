@@ -28,38 +28,38 @@ export default function Pergunta({cards, setCardsFeitos, cardsFeitos, respostas,
                     for(let i = 0; i < respostas.length; i++){
                         if(respostas[i].id === c.id){
                             return(
-                                <PerguntaFechada key={c.id} finalizou={cardsFeitos.includes(c.id)} cor={respostas[i].cor}>
-                                    <p>Pergunta {respostas[i].id}</p>
-                                    <img src={respostas[i].icone} alt=""/>
+                                <PerguntaFechada key={c.id} finalizou={cardsFeitos.includes(c.id)} cor={respostas[i].cor} data-test="flashcard">
+                                    <p data-test="flashcard-text">Pergunta {respostas[i].id}</p>
+                                    <img src={respostas[i].icone} alt="" data-test={respostas[i].icone === erroIcone ? "no-icon" : respostas[i].icone === certoIcone ? "zap-icon": respostas[i].icone === quaseIcone ? "partial-icon" : ""}/>
                                 </PerguntaFechada>
                             );
                         }
                     }
                 }else{
                     return (
-                        <PerguntaAberta  key={c.answer}>
-                            <p>{c.answer}</p>
+                        <PerguntaAberta  key={c.answer} data-test="flashcard">
+                            <p data-test="flashcard-text">{c.answer}</p>
                             <ContainerBotoes>
-                                <BotaoOpcao onClick={() => respondeu(c, "erro")} cor={"#FF3030"}>Não lembrei</BotaoOpcao>
-                                <BotaoOpcao onClick={() => respondeu(c, "quase")} cor={"#FF922E"}>Quase não lembrei</BotaoOpcao>
-                                <BotaoOpcao onClick={() => respondeu(c, "certo")} cor={"#2FBE34"}>Zap!</BotaoOpcao>
+                                <BotaoOpcao onClick={() => respondeu(c, "erro")} cor={"#FF3030"} data-test="no-btn">Não lembrei</BotaoOpcao>
+                                <BotaoOpcao onClick={() => respondeu(c, "quase")} cor={"#FF922E"} data-test="partial-btn">Quase não lembrei</BotaoOpcao>
+                                <BotaoOpcao onClick={() => respondeu(c, "certo")} cor={"#2FBE34"} data-test="zap-btn">Zap!</BotaoOpcao>
                             </ContainerBotoes>
                         </PerguntaAberta>
                     );
                 }
             }else{
                 return (
-                    <PerguntaAberta key={c.question}>
-                        <p>{c.question}</p>
-                        <img src={setaVirar} alt="" onClick={() => setCardsRespostas([...cardsRespostas, c.id])}/>
+                    <PerguntaAberta key={c.question} data-test="flashcard">
+                        <p data-test="flashcard-text">{c.question}</p>
+                        <img src={setaVirar} alt="" onClick={() => setCardsRespostas([...cardsRespostas, c.id])}  data-test="turn-btn"/>
                     </PerguntaAberta>
                 );
             }
         }else{
             return(
-                <PerguntaFechada key={c.id} cor={"#333333"}>
-                    <p>Pergunta {c.id}</p>
-                    <img src={setaPlay} alt="" onClick={() => setCardsVirados([...cardsVirados, c.id])}/>
+                <PerguntaFechada key={c.id} cor={"#333333"} data-test="flashcard">
+                    <p data-test="flashcard-text">Pergunta {c.id}</p>
+                    <img src={setaPlay} alt="" onClick={() => setCardsVirados([...cardsVirados, c.id])} data-test="play-btn"/>
                 </PerguntaFechada>
             );
         }

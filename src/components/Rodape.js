@@ -1,14 +1,16 @@
 import styled from "styled-components";
+import certoIcone from "../assets/icone_certo.png";
+import quaseIcone from "../assets/icone_quase.png";
 import erroIcone from "../assets/icone_erro.png";
 import party from "../assets/party.png";
 import sad from "../assets/sad.png";
 export default function Rodape({cards, cardsFeitos, respostas}){
     return(
-        <FooterConcluidos>
-            {(cardsFeitos.length === cards.length) ? (respostas.find(e => e.icone === erroIcone) ? <Mensagem><span><img src={sad} alt="" />Putz...</span><p>Ainda faltam alguns... <br/> Mas não desanime!</p></Mensagem> : <Mensagem><span><img src={party} alt="" />Parabéns!</span><p>Você não esqueceu de nenhum flashcard!</p></Mensagem> ) : ""}
+        <FooterConcluidos data-test="footer">
+            {(cardsFeitos.length === cards.length) ? (respostas.find(e => e.icone === erroIcone) ? <Mensagem data-test="finish-text"><span><img src={sad} alt="" />Putz...</span><p>Ainda faltam alguns... <br/> Mas não desanime!</p></Mensagem> : <Mensagem data-test="finish-text"><span><img src={party} alt="" />Parabéns!</span><p>Você não esqueceu de nenhum flashcard!</p></Mensagem> ) : ""}
             {cardsFeitos.length}/{cards.length} CONCLUÍDOS
             <ContainerBotoes>
-                {respostas.map((r) => <img key={r.id} src={r.icone} alt="" />)}
+                {respostas.map((r) => <img key={r.id} src={r.icone} alt="" data-test={r.icone === erroIcone ? "no-icon" : r.icone === certoIcone ? "zap-icon": r.icone === quaseIcone ? "partial-icon" : ""}/>)}
             </ContainerBotoes>
         </FooterConcluidos>
     );
