@@ -17,13 +17,13 @@ export default function App() {
     { id: 8, question: "Usamos estado (state) para __", answer: "Dizer para o React quais informações quando atualizadas devem renderizar a tela novamente" }
   ];
   const [cardsFeitos, setCardsFeitos] = useState([])
-
+  const [respostas, setRespostas] = useState([])
   return (
     <>
       <GlobalStyle />
       <ScreenContainer>
         <Logo />
-        <Pergunta cards={cards} setCardsFeitos={setCardsFeitos} cardsFeitos={cardsFeitos} />
+        <Pergunta cards={cards} setCardsFeitos={setCardsFeitos} cardsFeitos={cardsFeitos} respostas={respostas} setRespostas={setRespostas}/>
         <Rodape cards={cards} cardsFeitos={cardsFeitos} />
       </ScreenContainer>
     </>
