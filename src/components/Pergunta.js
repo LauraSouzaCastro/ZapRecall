@@ -63,10 +63,10 @@ export default function Pergunta({cards, setCardsFeitos, cardsFeitos, respostas,
                 </PerguntaFechada>
             );
         }
-    } 
+    }
     return (
             <Container>
-                {cards.map( (c) => renderiza(c))}           
+                {cards.map( (c) => renderiza(c))}
             </Container>
     );
 }

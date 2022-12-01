@@ -7,7 +7,7 @@ import sad from "../assets/sad.png";
 export default function Rodape({cards, cardsFeitos, respostas}){
     return(
         <FooterConcluidos data-test="footer">
-            {(cardsFeitos.length === cards.length) ? (respostas.find(e => e.icone === erroIcone) ? <Mensagem data-test="finish-text"><span><img src={sad} alt="" />Putz...</span><p>Ainda faltam alguns... <br/> Mas não desanime!</p></Mensagem> : <Mensagem data-test="finish-text"><span><img src={party} alt="" />Parabéns!</span><p>Você não esqueceu de nenhum flashcard!</p></Mensagem> ) : ""}
+            <Mensagem data-test="finish-text">{(cardsFeitos.length === cards.length) ? <><span><img src={respostas.find(e => e.icone === erroIcone) ? sad : party} alt="" />{respostas.find(e => e.icone === erroIcone) ? 'Putz...' : 'Parabéns!'}</span><p>{respostas.find(e => e.icone === erroIcone) ? <>Ainda faltam alguns... <br/> Mas não desanime!</> : 'Você não esqueceu de nenhum flashcard!'}</p></> : ""}</Mensagem>
             {cardsFeitos.length}/{cards.length} CONCLUÍDOS
             <ContainerBotoes>
                 {respostas.map((r) => <img key={r.id} src={r.icone} alt="" data-test={r.icone === erroIcone ? "no-icon" : r.icone === certoIcone ? "zap-icon": r.icone === quaseIcone ? "partial-icon" : ""}/>)}

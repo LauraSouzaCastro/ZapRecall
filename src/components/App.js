@@ -5,12 +5,12 @@ import TelaInicial from './TelaInicial';
 import Jogo from './Jogo';
 
 export default function App() {
-  const [iniciou, setIniciou] = useState(false)
+  const [iniciou, setIniciou] = useState(false);
   return (
     <>
       <GlobalStyle/>
       <ScreenContainer>
-        {iniciou ? <Jogo /> : <TelaInicial setIniciou={setIniciou} />}      
+        {iniciou ? <Jogo /> : <TelaInicial setIniciou={setIniciou} />}
       </ScreenContainer>
     </>
   );
