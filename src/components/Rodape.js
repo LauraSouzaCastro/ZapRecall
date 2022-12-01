@@ -1,8 +1,15 @@
 import styled from "styled-components"
-
-export default function Rodape({cards, cardsFeitos}){
+import certoIcone from "../assets/icone_certo.png"
+import quaseIcone from "../assets/icone_quase.png"
+import erroIcone from "../assets/icone_erro.png"
+export default function Rodape({cards, cardsFeitos, respostas}){
     return(
-        <FooterConcluidos>{cardsFeitos.length}/{cards.length} CONCLUÍDOS</FooterConcluidos>
+        <FooterConcluidos>
+            {cardsFeitos.length}/{cards.length} CONCLUÍDOS
+            <ContainerBotoes>
+                {respostas.map((r) => <img key={r.id} src={r.icone} alt="" />)}
+            </ContainerBotoes>
+        </FooterConcluidos>
     )
 }
 
@@ -20,6 +27,15 @@ const FooterConcluidos = styled.div`
     font-weight: 400;
     font-size: 18px;
     color: #333333;
-    padding: 10px;
+    padding: 9px;
     height: 70px;
 `;
+const ContainerBotoes = styled.div`
+  display: flex;
+  width: 80%;
+  justify-content: center;
+  margin: 6px;
+  img{
+    margin-right: 5px;
+  }
+`

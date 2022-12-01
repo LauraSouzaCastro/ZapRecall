@@ -24,7 +24,7 @@ export default function App() {
       <ScreenContainer>
         <Logo />
         <Pergunta cards={cards} setCardsFeitos={setCardsFeitos} cardsFeitos={cardsFeitos} respostas={respostas} setRespostas={setRespostas}/>
-        <Rodape cards={cards} cardsFeitos={cardsFeitos} />
+        <Rodape cards={cards} cardsFeitos={cardsFeitos} respostas={respostas}/>
       </ScreenContainer>
     </>
   );
